@@ -58,9 +58,15 @@ class Directory extends React.Component {
           //)
 
           // lets use destrecture method, instead of have to reference to the section everytime
-          this.state.sections.map(({title, imageUrl, id, size}) =>
-            <MenuItem key={id} title={title} imageUrl = {imageUrl} size={size} />
+          //this.state.sections.map(({title, imageUrl, id, size, linkUrl}) =>
+          //  <MenuItem key={id} title={title} imageUrl = {imageUrl} size={size} linkUrl={linkUrl}  />
+          //)
+
+          //even better, is the equivalents
+          this.state.sections.map(({id, ...otherSectionProps}) =>
+            <MenuItem key={id} {...otherSectionProps}  />
           )
+
 
 
         }
