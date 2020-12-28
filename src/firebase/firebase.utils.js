@@ -4,13 +4,13 @@ import 'firebase/auth';
 
 
 const config = {
-    apiKey: "AIzaSyA0UDh6wOCjW289r7zICYg8OfF-3ipBeag",
-    authDomain: "e-commercer-c9213.firebaseapp.com",
-    projectId: "e-commercer-c9213",
-    storageBucket: "e-commercer-c9213.appspot.com",
-    messagingSenderId: "812471199323",
-    appId: "1:812471199323:web:88f71250b14afc6068417e",
-    measurementId: "G-LMVMWS9M2R"
+    apiKey: process.env.REACT_APP_Firebase_apiKey,
+    authDomain: process.env.REACT_APP_Firebase_authDomain,
+    projectId: process.env.REACT_APP_Firebase_projectId,
+    storageBucket: process.env.REACT_APP_Firebase_storageBucket,
+    messagingSenderId: process.env.REACT_APP_Firebase_messagingSenderId,
+    appId: process.env.REACT_APP_Firebase_appId,
+    measurementId: process.env.REACT_APP_Firebase_measurementId
 }
 
 
