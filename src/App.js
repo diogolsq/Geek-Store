@@ -55,9 +55,11 @@ const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
 })
 
-
+// mapDispatchToProps is what in the doc of rect-redux, event thought is too complex and you cand write way easy by writing something like this
+// passing to the connect the actions itself {setCurrentUser}, boom you can already access as props inside your render.
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default App;
