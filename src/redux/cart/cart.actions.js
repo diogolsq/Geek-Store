@@ -10,3 +10,8 @@ export const toogleCartHidden = () => ({
   // payload: hidden
 });
 
+
+export const addItem = item => ({
+  type: CartActionTypes.ADD_ITEM,
+  payload: item
+});
