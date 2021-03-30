@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 const CartDropdown = ({cartItems}) => (
   <div className='cart-dropdown'>
     <div className='cart-items'>
-    {
+    {cartItems &&
       cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />)
     }  
     </div>
@@ -20,7 +20,7 @@ const CartDropdown = ({cartItems}) => (
 
 
 const mapStateToProps = state => ({
-  CartItems: state.cart.cartItems
+  cartItems: state.cart.cartItems
 })
 
 export default connect(mapStateToProps)(CartDropdown);
