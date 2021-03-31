@@ -1,32 +1,32 @@
 const SHOP_DATA = [
   {
     id: 1,
-    title: 'Hats',
-    routeName: 'hats',
+    title: 'Helmets',
+    routeName: 'helmets',
     items: [
       {
         id: 1,
-        name: 'Brown Brim',
-        imageUrl: 'https://i.ibb.co/ZYW3VTp/brown-brim.png',
-        price: 25
+        name: 'Dragon Shiryu Helmet',
+        imageUrl: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/36744e27-20e1-4709-9202-5f137d509811/d8rjju2-a7483985-78d3-4543-b551-565ea7f8eec0.jpg/v1/fill/w_955,h_837,q_70,strp/dragon_helmet_saint_seiya_by_ilustrastudios_d8rjju2-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD04OTciLCJwYXRoIjoiXC9mXC8zNjc0NGUyNy0yMGUxLTQ3MDktOTIwMi01ZjEzN2Q1MDk4MTFcL2Q4cmpqdTItYTc0ODM5ODUtNzhkMy00NTQzLWI1NTEtNTY1ZWE3ZjhlZWMwLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.o7nd_VztSq7VF5XBDdnVXK6ToOtW1dfF413bz_a222E',
+        price: 75
       },
       {
         id: 2,
-        name: 'Blue Beanie',
-        imageUrl: 'https://i.ibb.co/ypkgK0X/blue-beanie.png',
-        price: 18
+        name: 'StormTrooper New Hope',
+        imageUrl: 'https://www.rspropmasters.com/wp-content/uploads/2018/11/7F1A8084.jpg',
+        price: 115
       },
       {
         id: 3,
-        name: 'Brown Cowboy',
-        imageUrl: 'https://i.ibb.co/QdJwgmp/brown-cowboy.png',
-        price: 35
+        name: 'Daft Punk',
+        imageUrl: 'https://cdn.thisiswhyimbroke.com/images/daft-punk-helmet1.jpg',
+        price: 250
       },
       {
         id: 4,
-        name: 'Grey Brim',
-        imageUrl: 'https://i.ibb.co/RjBLWxB/grey-brim.png',
-        price: 25
+        name: 'Megaman Helmet',
+        imageUrl: 'https://store.capcom-europe.com/media/image/2e/eb/g0/MEGA_MAN_REPLICA_MEGA_MAN_HELMET_0012_600x600.png',
+        price: 120
       },
       {
         id: 5,
@@ -62,13 +62,13 @@ const SHOP_DATA = [
   },
   {
     id: 2,
-    title: 'Sneakers',
-    routeName: 'sneakers',
+    title: 'Jackets',
+    routeName: 'Jackets',
     items: [
       {
         id: 10,
-        name: 'Adidas NMD',
-        imageUrl: 'https://i.ibb.co/0s3pdnc/adidas-nmd.png',
+        name: 'Macfly Jacket',
+        imageUrl: 'https://super.abril.com.br/wp-content/uploads/2018/07/martin.jpg?quality=70&strip=info&resize=680,453',
         price: 220
       },
       {
