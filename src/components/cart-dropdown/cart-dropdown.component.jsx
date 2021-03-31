@@ -11,11 +11,12 @@ import { withRouter } from 'react-router-dom';
 const CartDropdown = ({cartItems, history}) => (
   <div className='cart-dropdown'>
     <div className='cart-items'>
-    {cartItems.size > 0 ?
+    {cartItems &&
       (cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />))
-      : (
+    }
+    {!cartItems  &&  
         <span className='empty-message'> Your Cart is empty</span>
-      )
+    }  
     }  
     </div>
     <CustomButton onClick={() => history.push('/checkout')}>GO TO CHECKOUT</CustomButton>>
