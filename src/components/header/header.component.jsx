@@ -8,7 +8,10 @@ import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
+import { createStructuredSelector } from 'reselect';
 import './header.styles.scss';
 
 const Header = ({ currentUser, hidden }) => (
@@ -38,9 +41,21 @@ const Header = ({ currentUser, hidden }) => (
   </div>
 );
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser,
-  hidden: state.cart.hidden
+// const mapStateToProps = state => ({
+  //  without selector
+  // currentUser: state.user.currentUser,
+  // hidden: state.cart.hidden
+  
+  // with selectors without createSructureSelector
+  // currentUser: selectCurrentUser(state),
+  // hidden :selectCartHidden(state)
+// });
+
+const mapStateToProps = createStructuredSelector({
+  // with selectors and createStructureSelector
+  currentUser: selectCurrentUser,
+  hidden :selectCartHidden,
 });
 
+  
 export default connect(mapStateToProps)(Header);

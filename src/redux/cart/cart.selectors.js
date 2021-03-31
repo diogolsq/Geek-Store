@@ -4,6 +4,12 @@ import { createSelector } from 'reselect';
 const selectCart = state => state.cart;
 
 
+export const selectCartHidden = createSelector(
+    [selectCart],
+    cart => cart.hidden
+);
+
+
 // createSelactor take first arg as array of selectors, the second is the order
 export const selectCartItems = createSelector(
     [selectCart], cart => cart.cartItems
