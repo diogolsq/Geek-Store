@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {selectCollections} from '../../redux/shop/shop.selectors';
 
+import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
 // will refactor using redux states and not react states
 // class ShopPage extends React.Component{
 
@@ -36,21 +37,10 @@ import {selectCollections} from '../../redux/shop/shop.selectors';
 const ShopPage = ({collections}) => {
   return(
     <div className='shop-page'>
-        {collections.map(({id, ...otherCollectionProps }) => (
-          <CollectionPreview key={id} {...otherCollectionProps} />
-          ))}
+      <CollectionsOverview />
     </div>
   )
 }
 
-// without selector
-// const mapStateToProps = state => ({
-//   collections: state.collections
-// });
 
-// with selector
-
-const mapStateToProps = createStructuredSelector({
-  collections: selectCollections,
-})
-export default connect(mapStateToProps)(ShopPage);
+export default ShopPage;
