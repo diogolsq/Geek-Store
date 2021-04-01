@@ -40,7 +40,6 @@ import CollectionsOverview from '../../components/collections-overview/collectio
 
 // since is already nested we have access to match, location and history props
 const ShopPage = ({match}) => {
-  console.log(match);
   return(
     <div className='shop-page'>
       <Route exact path={`${match.path}`} component={CollectionsOverview} />
