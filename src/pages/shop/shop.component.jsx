@@ -8,7 +8,7 @@ import React from 'react';
 // lets nest route
 
 import { Route } from 'react-router-dom';
-import CategoryPage from '../../pages/category/category.component'
+import CollectionPage from '../category/collection.component'
 
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
 // will refactor using redux states and not react states
@@ -44,7 +44,7 @@ const ShopPage = ({match}) => {
   return(
     <div className='shop-page'>
       <Route exact path={`${match.path}`} component={CollectionsOverview} />
-      <Route path={`${match.path}/:categoryId`} component={CategoryPage}/>
+      <Route path={`${match.path}/:categoryId`} component={CollectionPage}/>
     </div>
   )
 }
