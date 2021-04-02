@@ -1,3 +1,10 @@
+#root > div > div.header > a > svg {
+  width:auto;
+  position: relative;
+  bottom: 29px;
+}
+
+
 .header {
   height: 70px;
   width: 100%;
@@ -11,13 +18,10 @@
     padding: 25px;
   }
 
-  #root > div > div.header > a > svg {
-    width:auto;
-  }
+
 
   .logo{
     height: 335%;
-    widht: 100% !important;
   }
 
   .options {
