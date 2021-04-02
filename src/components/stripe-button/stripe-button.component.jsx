@@ -6,7 +6,7 @@ import logo from '../../assets/logo.svg';
 const StripeCheckoutButton = ({ price }) => {
     // stripe wants price in cents
     const priceForStripe = price * 100;
-    const publishabeKey = 'pk_test_51Ibo1EBiQBupP5Iu6grIsPWagkRmzsLahebhznCd4vV2n22LI0OGzqLjeE9lZPalc0mGIc4JQUVZ1TfbOsFzW1vh00iUcPItmt';
+    const publishableKey = 'pk_test_51Ibo1EBiQBupP5Iu6grIsPWagkRmzsLahebhznCd4vV2n22LI0OGzqLjeE9lZPalc0mGIc4JQUVZ1TfbOsFzW1vh00iUcPItmt';
     
     
     const onToken = token => {
@@ -25,6 +25,10 @@ const StripeCheckoutButton = ({ price }) => {
             amount={priceForStripe}
             panelLabel='Pay now'
             token={onToken}
+            stripeKey={publishableKey}
         />
     )
 }
+
+
+export default StripeCheckoutButton;
