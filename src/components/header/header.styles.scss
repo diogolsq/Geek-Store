@@ -11,6 +11,15 @@
     padding: 25px;
   }
 
+  #root > div > div.header > a > svg {
+    width:auto;
+  }
+
+  .logo{
+    height: 335%;
+    widht: 100% !important;
+  }
+
   .options {
     width: 50%;
     height: 100%;
