@@ -18,14 +18,14 @@ const SHOP_DATA = [
       },
       {
         id: 3,
-        name: 'Daft Punk',
-        imageUrl: 'https://cdn.thisiswhyimbroke.com/images/daft-punk-helmet1.jpg',
-        price: 250
+        name: 'Superman Cap New Era',
+        imageUrl:'/images/supermancap.jpg',
+        price: 20
       },
       {
         id: 4,
         name: 'Megaman Helmet',
-        imageUrl: 'https://store.capcom-europe.com/media/image/2e/eb/g0/MEGA_MAN_REPLICA_MEGA_MAN_HELMET_0012_600x600.png',
+        imageUrl: '/images/megamanhelmet.png',
         price: 120
       },
       {
@@ -36,9 +36,9 @@ const SHOP_DATA = [
       },
       {
         id: 6,
-        name: 'Palm Tree Cap',
-        imageUrl: 'https://i.ibb.co/rKBDvJX/palm-tree-cap.png',
-        price: 14
+        name: 'Daft Punk',
+        imageUrl: 'https://cdn.thisiswhyimbroke.com/images/daft-punk-helmet1.jpg',
+        price: 250
       },
       {
         id: 7,
