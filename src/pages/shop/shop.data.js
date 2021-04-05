@@ -159,32 +159,32 @@ const SHOP_DATA = [
     items: [
       {
         id: 23,
-        name: 'Blue Tanktop',
-        imageUrl: 'https://i.ibb.co/7CQVJNm/blue-tank.png',
+        name: 'Wonder Woman shirt',
+        imageUrl: '/images/woman.png',
         price: 25
       },
       {
         id: 24,
-        name: 'Floral Blouse',
-        imageUrl: 'https://i.ibb.co/4W2DGKm/floral-blouse.png',
+        name: 'Super heroin shirt',
+        imageUrl: '/images/girlpower.jpg',
         price: 20
       },
       {
         id: 25,
-        name: 'Floral Dress',
-        imageUrl: 'https://i.ibb.co/KV18Ysr/floral-skirt.png',
+        name: 'Evil Queen shirt',
+        imageUrl: '/images/evilqueen.jpg',
         price: 80
       },
       {
         id: 26,
-        name: 'Red Dots Dress',
-        imageUrl: 'https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png',
+        name: 'Batman woman',
+        imageUrl: '/images/batgirl.jpg',
         price: 80
       },
       {
         id: 27,
-        name: 'Striped Sweater',
-        imageUrl: 'https://i.ibb.co/KmSkMbH/striped-sweater.png',
+        name: 'Pikachu shirt',
+        imageUrl: '/images/pikachu.jpg',
         price: 45
       },
       {
@@ -195,8 +195,8 @@ const SHOP_DATA = [
       },
       {
         id: 29,
-        name: 'White Blouse',
-        imageUrl: 'https://i.ibb.co/qBcrsJg/white-vest.png',
+        name: 'Star Wars blouse',
+        imageUrl: '/images/sw.jpg',
         price: 20
       }
     ]
