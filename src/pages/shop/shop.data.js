@@ -179,19 +179,19 @@ const SHOP_DATA = [
         id: 26,
         name: 'Batman woman',
         imageUrl: '/images/batgirl.jpg',
-        price: 80
+        price: 25
       },
       {
         id: 27,
         name: 'Pikachu shirt',
         imageUrl: '/images/pikachu.jpg',
-        price: 45
+        price: 20
       },
       {
         id: 28,
-        name: 'Yellow Track Suit',
-        imageUrl: 'https://i.ibb.co/v1cvwNf/yellow-track-suit.png',
-        price: 135
+        name: 'Hakuna Matata shirt',
+        imageUrl: '/images/hakuna.jpg',
+        price: 20
       },
       {
         id: 29,
@@ -208,38 +208,38 @@ const SHOP_DATA = [
     items: [
       {
         id: 30,
-        name: 'Camo Down Vest',
-        imageUrl: 'https://i.ibb.co/xJS0T3Y/camo-vest.png',
-        price: 325
+        name: 'Megaman shirt',
+        imageUrl: '/images/mannew.jpg',
+        price: 25
       },
       {
         id: 31,
-        name: 'Floral T-shirt',
-        imageUrl: 'https://i.ibb.co/qMQ75QZ/floral-shirt.png',
+        name: 'Mr meeseks',
+        imageUrl: '/images/mrmeeseks.jpg',
         price: 20
       },
       {
         id: 32,
-        name: 'Black & White Longsleeve',
-        imageUrl: 'https://i.ibb.co/55z32tw/long-sleeve.png',
+        name: 'Superman Classic',
+        imageUrl: '/images/man.png',
         price: 25
       },
       {
         id: 33,
-        name: 'Pink T-shirt',
-        imageUrl: 'https://i.ibb.co/RvwnBL8/pink-shirt.png',
+        name: 'Bazinga Sheldon',
+        imageUrl: '/images/bazinga.jpg',
         price: 25
       },
       {
         id: 34,
-        name: 'Jean Long Sleeve',
-        imageUrl: 'https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png',
-        price: 40
+        name: 'Nasa Moleton',
+        imageUrl: '/images/nasa.jpg',
+        price: 50
       },
       {
         id: 35,
-        name: 'Burgundy T-shirt',
-        imageUrl: 'https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',
+        name: 'Sony Ps4 Shirt',
+        imageUrl: '/images/ps4.jpg',
         price: 25
       }
     ]
