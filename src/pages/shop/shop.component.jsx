@@ -11,8 +11,9 @@ import { Route } from 'react-router-dom';
 import CollectionPage from '../category/collection.component'
 
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
-import { firestore, converCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
-
+import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
+import { connect } from 'react-redux';
+import { updateCollections } from '../../redux/shop/shop.actions';
 // will refactor using redux states and not react states
 // class ShopPage extends React.Component{
 
@@ -47,11 +48,16 @@ class ShopPage extends React.Component{
 
 
   componentDidMount(){
+    const { updatedCollections } = this.props;
     const collectionRef = firestore.collection('collections');
 
+    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
+      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+      updateCollections(collectionsMap)
+    })
 
     collectionRef.onSnapshot(async snapshot => {
-      converCollectionsSnapshotToMap(snapshot);
+      convertCollectionsSnapshotToMap(snapshot);
     })
   }
   
@@ -68,6 +74,8 @@ class ShopPage extends React.Component{
   }
 } 
 
+const mapDispatchToProps = dispatch => ({
+  updateCollections: collectionsMap => dispatch(updateCollections(collectionsMap))
+})
 
-
-export default ShopPage;
+export default connect(null, mapDispatchToProps)(ShopPage);
