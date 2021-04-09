@@ -11,6 +11,8 @@ import { Route } from 'react-router-dom';
 import CollectionPage from '../category/collection.component'
 
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
+import { firestore, converCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
+
 // will refactor using redux states and not react states
 // class ShopPage extends React.Component{
 
@@ -39,14 +41,33 @@ import CollectionsOverview from '../../components/collections-overview/collectio
 // }
 
 // since is already nested we have access to match, location and history props
-const ShopPage = ({match}) => {
-  return(
-    <div className='shop-page'>
-      <Route exact path={`${match.path}`} component={CollectionsOverview} />
-      <Route path={`${match.path}/:categoryId`} component={CollectionPage}/>
-    </div>
-  )
-}
+class ShopPage extends React.Component{
+  
+  unsubscribeFromSnapshot= null;
+
+
+  componentDidMount(){
+    const collectionRef = firestore.collection('collections');
+
+
+    collectionRef.onSnapshot(async snapshot => {
+      converCollectionsSnapshotToMap(snapshot);
+    })
+  }
+  
+  
+  
+  render(){
+    const { match} = this.props;
+    return(
+        <div className='shop-page'>
+          <Route exact path={`${match.path}`} component={CollectionsOverview} />
+          <Route path={`${match.path}/:categoryId`} component={CollectionPage}/>
+        </div>
+    )
+  }
+} 
+
 
 
 export default ShopPage;
