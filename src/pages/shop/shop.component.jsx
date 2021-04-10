@@ -10,6 +10,10 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import CollectionPage from '../category/collection.component'
 
+
+import WithSpinner from '../../components/with-spinner/with-spinner.component';
+
+
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
 import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
@@ -41,9 +45,23 @@ import { updateCollections } from '../../redux/shop/shop.actions';
 //   }
 // }
 
+const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
+const CollectionPageWithSpinner = WithSpinner(CollectionPage);
+
+
+
+
+
+
+
+
 // since is already nested we have access to match, location and history props
 class ShopPage extends React.Component{
   
+  state = {
+    loading: true
+  };
+
   unsubscribeFromSnapshot= null;
 
 
@@ -53,7 +71,8 @@ class ShopPage extends React.Component{
 
     this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
       const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-      updateCollections(collectionsMap)
+      updateCollections(collectionsMap);
+      this.setState({loading: false});
     })
 
     collectionRef.onSnapshot(async snapshot => {
@@ -65,10 +84,12 @@ class ShopPage extends React.Component{
   
   render(){
     const { match} = this.props;
+    const { loading } = this.state;
+    
     return(
         <div className='shop-page'>
-          <Route exact path={`${match.path}`} component={CollectionsOverview} />
-          <Route path={`${match.path}/:categoryId`} component={CollectionPage}/>
+          <Route exact path={`${match.path}`} render={(props) => <CollectionsOverviewWithSpinner  isLoading={loading} {...props} />} />
+          <Route path={`${match.path}/:categoryId`} render={(props) => <CollectionsOverviewWithSpinner  isLoading={loading} {...props} />}/>
         </div>
     )
   }
