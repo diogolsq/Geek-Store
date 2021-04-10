@@ -1,4 +1,4 @@
-import SHOP_DATA  from "../../pages/shop/shop.data";
+// import SHOP_DATA  from "../../pages/shop/shop.data";
 
 import ShopActionTypes from './shop.types';
 
@@ -6,7 +6,7 @@ import ShopActionTypes from './shop.types';
 
 
 const INITIAL_STATE = {
- collections: SHOP_DATA
+ collections: null
 };
 
 
