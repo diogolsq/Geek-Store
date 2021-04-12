@@ -10,9 +10,15 @@ import { selectCollection } from '../../redux/shop/shop.selectors';
 
 import './collection.styles.scss';
 
+import {
+    CollectionPageContainer,
+    CollectionTitle,
+    CollectionItemsContainer
+  } from './collection.styles';
 
 
-const CollectionPage = ({ collection, match }) => {
+const CollectionPage     = ({ collection }) => {
+    
     const { title, items } = collection;
     
     // console.log({title});

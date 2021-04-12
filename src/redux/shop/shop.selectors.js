@@ -23,8 +23,18 @@ export const selectCollectionsForPreview = createSelector(
     collections => collections ? Object.keys(collections).map(key => collections[key]) : []
   );
 
+// export const selectCollection = collectionUrlParam =>
+//     createSelector(
+//         [selectCollections],
+//         collections => (collections ? collections.find(collection => collection.routeName === collectionUrlParam) : null)
+//     )
+// ;
+
+
 export const selectCollection = collectionUrlParam =>
     createSelector(
         [selectCollections],
-        collections => (collections ? collections.find(collection => collection.routeName === collectionUrlParam) : null)
-    );
+        collections => (collections ? collections[collectionUrlParam] : null)
+    )
+    
+;
