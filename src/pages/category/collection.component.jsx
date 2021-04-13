@@ -19,6 +19,7 @@ import {
 
 const CollectionPage     = ({ collection }) => {
     
+    console.log(collection)
     const { title, items } = collection;
     
     // console.log({title});
@@ -35,7 +36,7 @@ const CollectionPage     = ({ collection }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-    collection: selectCollection(ownProps.match.params.categoryId)(state)
+    collection: selectCollection(ownProps.match.params.collectionId)(state)
 });
 
 
