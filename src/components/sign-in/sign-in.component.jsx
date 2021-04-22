@@ -17,20 +17,20 @@ const SignIn = () => {
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      this.setCredentials({
+      setCredentials({
         email:'',
         password:''})
     }catch(error){
       console.log(error);
     }
 
-    this.setCredintials({email: '', password: ''})
+    setCredentials({email: '', password: ''})
   };
 
   const handleChange = event => {
     const { value, name } = event.target;
 
-    this.setState({[name]: value})
+    setCredentials({...userCredentials, [name]: value})
   }
 
 
@@ -51,7 +51,7 @@ const SignIn = () => {
           type='password'
           value={password}
           label='password'
-          handleChange={this.handleChange}
+          handleChange={handleChange}
           required />
           <div className='buttons'>
             <CustomButton type='submit'> Sign In </CustomButton>
