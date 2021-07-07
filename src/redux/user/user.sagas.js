@@ -1,18 +1,42 @@
-import { takeLatest, put, take } from 'redux-saga/effects';
+import { takeLatest, put, all, call, take } from 'redux-saga/effects';
 
 import UserActionTypes from './user.types';
 
+import { auth, googleProvider, createUserProfileDocument} from '../../firebase/firebase.utils'
+
+import { googleSignInSuccess, googleSignInFailure } from './user.actions';
 //Todo pass to saga
 
-export function* onGoogleSignInStartAsync(){
-
+export function* signInWithGoogle() {
     try{
-        yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, )
-    } catch (error) {
-        yield put(fetchCollectionsFailure(error.message));
-    }
+        const {user} = yield auth.signInWithPopup(googleProvider);
+        console.log(user);
+        const userRef = yield call(createUserProfileDocument, user);
+        const userSnapshot = yield userRef.get();
+        yield put(googleSignInSuccess({ id: userSnapshot.id, ...userSnapshot.data()  }))
 
+    } catch(error) {
+        yield put(googleSignInFailure(error));
+    }
+}
+
+export function* onGoogleSignInStart() {
+    yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
 
 
+// export function* onGoogleSignInStartAsync(){
+
+//     try{
+//         yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, )
+//     } catch (error) {
+//         yield put(fetchCollectionsFailure(error.message));
+//     }
+
+// }
+
+
+export function* userSagas() {
+    yield all([call(onGoogleSignInStart)]);
+}
 
