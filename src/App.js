@@ -12,7 +12,7 @@ import Header from './components/header/header.component';
 import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.utils';
 // import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
-
+import { checkUserSession } from './redux/user/user.actions';
 import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 
 
@@ -20,8 +20,10 @@ import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
-  // componentDidMount() {
-  //   // const { setCurrentUser, collectionsArray } = this.props;
+  componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
+    //   // const { setCurrentUser, collectionsArray } = this.props;
 
   //   this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
   //     if (userAuth) {
@@ -38,7 +40,7 @@ class App extends React.Component {
   //     setCurrentUser(userAuth);
   //     addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items })))
   //   });
-  // }
+  }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
@@ -72,11 +74,12 @@ const mapStateToProps = (state) => ({
 
 // mapDispatchToProps is what in the doc of rect-redux, event thought is too complex and you cand write way easy by writing something like this
 // passing to the connect the actions itself {setCurrentUser}, boom you can already access as props inside your render.
-// const mapDispatchToProps = dispatch => ({
-//   setCurrentUser: user => dispatch(setCurrentUser(user))
-// });
+const mapDispatchToProps = dispatch => ({
+  // setCurrentUser: user => dispatch(setCurrentUser(user))
+  checkUserSession: () => dispatch(checkUserSession()),
+});
 
 export default connect(mapStateToProps
-  // , mapDispatchToProps
+  , mapDispatchToProps
   )(App);
 // export default App;
