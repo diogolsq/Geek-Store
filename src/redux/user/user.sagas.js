@@ -7,13 +7,23 @@ import { auth, googleProvider, createUserProfileDocument} from '../../firebase/f
 import { signInSuccess, signInFailure } from './user.actions';
 //Todo pass to saga
 
+export function* getSnapshotFromUserAuth(userAuth) {
+    try{
+        const userRef = yield call(createUserProfileDocument, userAuth);
+        const userSnapshot = yield userRef.get();
+        yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data()  }))
+
+    } catch(error) {
+        yield put(signInFailure(error));
+    }
+}
+
+
+
 export function* signInWithGoogle() {
     try{
         const {user} = yield auth.signInWithPopup(googleProvider);
-        console.log(user);
-        const userRef = yield call(createUserProfileDocument, user);
-        const userSnapshot = yield userRef.get();
-        yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data()  }))
+        yield getSnapshotFromUserAuth(user);
 
     } catch(error) {
         yield put(signInFailure(error));
@@ -37,13 +47,9 @@ export function* onGoogleSignInStart() {
 
 export function* signInWithEmail({ payload: {email, password}}) {
     try {
-        console.log('beep')
         const { user } = yield auth.signInWithEmailAndPassword(email, password);
         console.log(user);
-        const userRef = yield call(createUserProfileDocument, user);
-        const userSnapshot = yield userRef.get();
-        yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data()  }))
-
+        yield getSnapshotFromUserAuth(user);
     } catch (error) {
         yield put(signInFailure(error));
     }
