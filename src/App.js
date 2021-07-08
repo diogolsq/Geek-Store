@@ -23,23 +23,7 @@ class App extends React.Component {
   componentDidMount() {
     const { checkUserSession } = this.props;
     checkUserSession();
-    //   // const { setCurrentUser, collectionsArray } = this.props;
 
-  //   this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-  //     if (userAuth) {
-  //       const userRef = await createUserProfileDocument(userAuth);
-
-  //       userRef.onSnapshot(snapShot => {
-  //         setCurrentUser({
-  //           id: snapShot.id,
-  //           ...snapShot.data()
-  //         });
-  //       });
-  //     }
-
-  //     setCurrentUser(userAuth);
-  //     addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items })))
-  //   });
   }
 
   componentWillUnmount() {
@@ -68,7 +52,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => ({
   currentUser: selectCurrentUser(state),
-  collectionsArray: selectCollectionsForPreview(state)
+  // collectionsArray: selectCollectionsForPreview(state)
 })
 
 
