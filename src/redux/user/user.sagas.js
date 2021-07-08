@@ -4,7 +4,7 @@ import UserActionTypes from './user.types';
 
 import { auth, googleProvider, createUserProfileDocument, getCurrentUser} from '../../firebase/firebase.utils'
 
-import { signInSuccess, signInFailure } from './user.actions';
+import { signInSuccess, signInFailure, signOutSuccess, signoutSuccess, signOutFailure} from './user.actions';
 //Todo pass to saga
 
 export function* getSnapshotFromUserAuth(userAuth) {
@@ -67,6 +67,15 @@ export function* signInWithEmail({ payload: {email, password}}) {
     }
 }
 
+export function* SignOut() {
+    try{
+        yield auth.signOut();
+        yield (put(signOutSuccess()))
+    }catch (error) {
+        yield put(signOutFailure(error));
+    }
+}
+
 
 export function* onEmailSignInStart() {
     yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signInWithEmail);
@@ -78,9 +87,13 @@ export function* onCheckUserSession() {
 }
 
 
+export function* onSignOutStart() {
+    yield takeLatest(UserActionTypes.SIGN_OUT_START, SignOut)
+}
+
 
 
 export function* userSagas() {
-    yield all([call(onGoogleSignInStart), call(onEmailSignInStart), call(onCheckUserSession)]);
+    yield all([call(onGoogleSignInStart), call(onEmailSignInStart), call(onCheckUserSession), call(onSignOutStart)]);
 }
 
