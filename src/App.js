@@ -10,7 +10,7 @@ import CheckoutPage from './pages/checkout/checkout.component'
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component';
 import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/user/user.actions';
+// import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
@@ -20,25 +20,25 @@ import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
-  componentDidMount() {
-    const { setCurrentUser, collectionsArray } = this.props;
+  // componentDidMount() {
+  //   // const { setCurrentUser, collectionsArray } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+  //   this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+  //     if (userAuth) {
+  //       const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-      }
+  //       userRef.onSnapshot(snapShot => {
+  //         setCurrentUser({
+  //           id: snapShot.id,
+  //           ...snapShot.data()
+  //         });
+  //       });
+  //     }
 
-      setCurrentUser(userAuth);
-      addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items })))
-    });
-  }
+  //     setCurrentUser(userAuth);
+  //     addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({title, items })))
+  //   });
+  // }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
@@ -72,9 +72,11 @@ const mapStateToProps = (state) => ({
 
 // mapDispatchToProps is what in the doc of rect-redux, event thought is too complex and you cand write way easy by writing something like this
 // passing to the connect the actions itself {setCurrentUser}, boom you can already access as props inside your render.
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
+// const mapDispatchToProps = dispatch => ({
+//   setCurrentUser: user => dispatch(setCurrentUser(user))
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps
+  // , mapDispatchToProps
+  )(App);
 // export default App;
