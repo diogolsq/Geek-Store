@@ -4,7 +4,7 @@ import UserActionTypes from './user.types';
 
 import { auth, googleProvider, createUserProfileDocument} from '../../firebase/firebase.utils'
 
-import { googleSignInSuccess, googleSignInFailure } from './user.actions';
+import { googleSignInSuccess, googleSignInFailure, emailSignInSuccess, emailSignInFailure } from './user.actions';
 //Todo pass to saga
 
 export function* signInWithGoogle() {
@@ -34,6 +34,20 @@ export function* onGoogleSignInStart() {
 //     }
 
 // }
+
+export function* signInWithEmail({ payload: {email, password}}) {
+    try {
+
+    } catch (error) {
+        yield put(emailSignInFailure(error));
+    }
+}
+
+
+export function* onEmailSignInStart() {
+    yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START,)
+}
+
 
 
 export function* userSagas() {
