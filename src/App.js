@@ -17,32 +17,25 @@ import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 
 
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+  const App = ({checkUserSession, currentUser}) => {
+  useEffect(() => {
+    checkUserSession()
+  }, [checkUserSession]);
+    // const { checkUserSession } = this.props;
 
-  componentDidMount() {
-    const { checkUserSession } = this.props;
-    checkUserSession();
 
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
-  render() {
+ 
     return (
       <div>
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
-          <Route path='/signin' render={() => this.props.currentUser? (<Redirect to='/' />) : (<SignInAndSignUpPage />)} />
+          <Route path='/signin' render={() => currentUser? (<Redirect to='/' />) : (<SignInAndSignUpPage />)} />
           <Route exact path = '/checkout' component={CheckoutPage} />/
         </Switch>
       </div>
     );
-  }
 }
 
 // without selector
