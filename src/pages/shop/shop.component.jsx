@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -22,52 +22,27 @@ import CollectionsPageContainer from '../category/collection.container';
 // const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 // const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
-class ShopPage extends React.Component {
-  state = {
-    loading: true
-  };
+const ShopPage = ({fetchCollectionsStart, match, }) => {
 
-  unsubscribeFromSnapshot = null;
-
-  componentDidMount() {
-    // // exemple how we would do using fetch
-    // fetch("https://firestore.googleapis.com/v1/projects/e-commercer-c9213/databases/(default)/documents/collections")
-    // .then(response => response.json())
-    // .then(collections => console.log(collections))
-    
-    // using the right request in the component did mount, without using multiple dispatchs of redux-thunk
-    
-    // const { updateCollections } = this.props;
-    // const collectionRef = firestore.collection('collections');
-    
-    // collectionRef.get().then(snapshot => {
-    //   const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-    //   updateCollections(collectionsMap);
-    //   this.setState({ loading: false });
-    // });
-
-    const { fetchCollectionsStart } = this.props;
+  useEffect(() => {
     fetchCollectionsStart();
-  }
-
-  render() {
-    const { match, IsCollectionsLoaded } = this.props;
-    const { loading } = this.state;
-    return (
-      <div className='shop-page'>
-        <Route
-          exact
-          path={`${match.path}`}
-          component={CollectionsOverviewContainer}
-        />
-        <Route
-          path={`${match.path}/:collectionId`}
-          component={CollectionsPageContainer}
-        />
-      </div>
-    );
-  }
+  }, [fetchCollectionsStart]); // good practice, checking if the fetchcolletction change to not decrease performance, otherwise fecthcollection will be triggered everytime the shop is rerender.
+  
+  return (
+    <div className='shop-page'>
+      <Route
+        exact
+        path={`${match.path}`}
+        component={CollectionsOverviewContainer}
+      />
+      <Route
+        path={`${match.path}/:collectionId`}
+        component={CollectionsPageContainer}
+      />
+    </div>
+  );
 }
+
 
 
 
