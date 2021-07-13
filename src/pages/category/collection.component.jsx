@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 
 
 import CollectionItem from '../../components/collection-item/collection-item.component';
-
+import {firestore} from '../../firebase/firebase.utils';
 import { selectCollection } from '../../redux/shop/shop.selectors';
 
 
@@ -18,7 +18,16 @@ import {
 
 
 const CollectionPage     = ({ collection }) => {
-    
+    useEffect(() => {
+        console.log('i am subscribing')
+        firestore.collection('collection').onSnapshot(snapshot => console.log(snapshot))
+        // return mimic the cleanup function componentWillUnmount
+        return () => {
+            console.log('i am unsubscribing')
+            // unsubscribeFromCollection();
+        }
+    }, []);
+
     console.log(collection)
     const { title, items } = collection;
     
